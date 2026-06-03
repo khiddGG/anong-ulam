@@ -1,0 +1,18 @@
+[
+  { "name": "Pritong Itlog", "image": "data/ulam/Pritong-Itlog.jpg" },
+  { "name": "Nilagang Itlog", "image": "data/ulam/Nilagang-Itlog.jpg" },
+  { "name": "Scrambled Egg", "image": "data/ulam/Scrambled-Egg.jpg" },
+  { "name": "Tortang Talong", "image": "data/ulam/Tortang-Talong.jpg" },
+  { "name": "Pancit Canton Original", "image": "data/ulam/Pancit-Canton-Original.jpg" },
+  { "name": "Pancit Canton Kalamansi", "image": "data/ulam/Pancit-Canton-Kalamansi.jpg" },
+  { "name": "Pancit Canton Chilimansi", "image": "data/ulam/Pancit-Canton-ChiliMansi.jpg" },
+  { "name": "Lucky Me Chicken", "image": "data/ulam/Lucky-Me-Chicken.jpg" },
+  { "name": "Lucky Me Beef", "image": "data/ulam/Lucky-Me-Beef.jpg" },
+  { "name": "Corned Beef", "image": "data/ulam/Corned-Beef.jpg" },
+  { "name": "Beef Loaf", "image": "data/ulam/Beef-Loaf.png" },
+  { "name": "Sardinas", "image": "data/ulam/Sardinas.jpg" },
+  { "name": "Hotdog", "image": "data/ulam/Hotdog.jpg" },
+  { "name": "Longganisa", "image": "data/ulam/Longganisa.jpg" },
+  { "name": "Siomai", "image": "data/ulam/Siomai.jpg" },
+  { "name": "Mantika Toyo Asin", "image": "data/ulam/Mantika-Toyo-Asin.jpg" }
+]
