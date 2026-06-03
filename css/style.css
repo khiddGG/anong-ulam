@@ -227,6 +227,9 @@ body {
   opacity: 0.3;
   transition: opacity 0.3s ease;
   color: var(--text-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .display-area .placeholder-icon svg {
   width: 100%;
