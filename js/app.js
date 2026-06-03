@@ -22,6 +22,7 @@
   const skipIntro = $('#skipIntro');
   const spinBtn = $('#spinBtn');
   const displayImage = $('#displayImage');
+  const placeholderIcon = $('#placeholderIcon');
   const rouletteContainer = $('#rouletteContainer');
   const rouletteTrack = $('#rouletteTrack');
   const resultOverlay = $('#resultOverlay');
@@ -52,6 +53,7 @@
     dice: '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="9" cy="9" r="1.5" fill="currentColor"/><circle cx="15" cy="15" r="1.5" fill="currentColor"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/></svg>',
     refresh: '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0114.85-3.36L23 10"/><path d="M1 14l4.64 4.36A9 9 0 0020.49 15"/></svg>',
     star: '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>',
+    bowl: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width:100%;height:100%"><path d="M2 13h20"/><path d="M6 13a6 6 0 0112 0"/></svg>',
   };
 
   /* ── Splash Transitions ── */
@@ -106,6 +108,7 @@
     spinBtn.classList.remove('pick-again');
     resultOverlay.classList.remove('active');
     displayImage.style.opacity = '0';
+    placeholderIcon.style.opacity = '0';
 
     const selected = pickRandomUlam();
     state.previousUlam = state.currentUlam;
@@ -329,9 +332,14 @@
 
   /* ── Image Error Fallback ── */
   displayImage.addEventListener('error', function () {
-    this.src = 'data/think.png';
-    this.alt = 'Think';
-    this.style.objectFit = 'contain';
+    this.style.display = 'none';
+    placeholderIcon.style.opacity = '0.5';
+    placeholderIcon.innerHTML = ICONS.bowl;
+    console.warn('Failed to load image:', this.src);
+  });
+  displayImage.addEventListener('load', function () {
+    this.style.display = 'block';
+    placeholderIcon.style.opacity = '0';
   });
 
   /* ── Keyboard / Spin Handler ── */
