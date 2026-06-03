@@ -119,7 +119,7 @@
     displayImage.style.opacity = '0';
     placeholderIcon.style.opacity = '0';
 
-    const selected = pickRandomUlam();
+    const selected = pickRandomUlam(state.currentUlam);
     state.previousUlam = state.currentUlam;
     state.currentUlam = selected;
 
@@ -132,12 +132,11 @@
     startLoadingMessages();
   }
 
-  function pickRandomUlam() {
-    let idx;
-    const prevName = state.previousUlam ? state.previousUlam.name : null;
-    const available = state.ulams.filter(u => u.name !== prevName);
+  function pickRandomUlam(exclude) {
+    const excludeName = exclude ? exclude.name : null;
+    const available = state.ulams.filter(u => u.name !== excludeName);
     const pool = available.length > 0 ? available : state.ulams;
-    idx = Math.floor(Math.random() * pool.length);
+    const idx = Math.floor(Math.random() * pool.length);
     return pool[idx];
   }
 
