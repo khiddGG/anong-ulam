@@ -64,8 +64,8 @@
       <div class="display-area" role="img" aria-label="Ulam display">
         <span class="placeholder-icon" id="placeholderIcon" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M2 13h20"/>
-            <path d="M6 13a6 6 0 0112 0"/>
+            <path d="M2 9h20"/>
+            <path d="M6 9a6 6 0 0112 0"/>
           </svg>
         </span>
         <img id="displayImage" src="" alt="" loading="lazy" style="opacity:0;">
@@ -134,6 +134,23 @@
     </footer>
 
   </section>
+
+  <!-- Warning Modal -->
+  <div id="warningModal" class="modal-overlay" role="dialog" aria-modal="true">
+    <div class="modal-card">
+      <div class="modal-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"/>
+          <path d="M6.5 7.5l4 2.5M17.5 7.5l-4 2.5"/>
+          <circle cx="9.5" cy="13" r="1.5" fill="currentColor"/>
+          <circle cx="14.5" cy="13" r="1.5" fill="currentColor"/>
+          <path d="M8 17a4 4 0 0 0 8 0"/>
+        </svg>
+      </div>
+      <p class="modal-text">wow arte yarn?</p>
+      <button id="modalBtn" class="modal-btn">Sige na</button>
+    </div>
+  </div>
 
   <script defer src="js/app.js"></script>
 </body>

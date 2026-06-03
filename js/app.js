@@ -8,6 +8,7 @@
     currentUlam: null,
     previousUlam: null,
     history: [],
+    spinCount: 0,
     confettiPieces: [],
     confettiAnimId: null,
   };
@@ -33,6 +34,8 @@
   const historyList = $('#historyList');
   const confettiCanvas = $('#confettiCanvas');
   const ctx = confettiCanvas.getContext('2d');
+  const warningModal = $('#warningModal');
+  const modalBtn = $('#modalBtn');
 
   /* ── Messages ── */
   const loadingMessages = [
@@ -53,7 +56,7 @@
     dice: '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="9" cy="9" r="1.5" fill="currentColor"/><circle cx="15" cy="15" r="1.5" fill="currentColor"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/></svg>',
     refresh: '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0114.85-3.36L23 10"/><path d="M1 14l4.64 4.36A9 9 0 0020.49 15"/></svg>',
     star: '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>',
-    bowl: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width:100%;height:100%"><path d="M2 13h20"/><path d="M6 13a6 6 0 0112 0"/></svg>',
+    bowl: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width:100%;height:100%"><path d="M2 9h20"/><path d="M6 9a6 6 0 0112 0"/></svg>',
   };
 
   /* ── Splash Transitions ── */
@@ -101,6 +104,12 @@
   /* ── Roulette Animation ── */
   function startSpin() {
     if (state.isSpinning || state.ulams.length === 0) return;
+
+    if (state.spinCount >= 3) {
+      warningModal.classList.add('active');
+      return;
+    }
+
     state.isSpinning = true;
 
     spinBtn.disabled = true;
@@ -214,6 +223,7 @@
   /* ── End Spin ── */
   function endSpin(selected) {
     state.isSpinning = false;
+    state.spinCount++;
     stopLoadingMessages();
 
     rouletteContainer.classList.remove('active');
@@ -358,6 +368,12 @@
         e.preventDefault();
       }
     }
+  });
+
+  /* ── Modal Dismiss ── */
+  modalBtn.addEventListener('click', function () {
+    warningModal.classList.remove('active');
+    state.spinCount = 0;
   });
 
   /* ── Init ── */
